@@ -14,7 +14,7 @@ namespace CatchTheMouse.Lib
         internal int DeltaX { get; }
         internal int DeltaY { get; }
 
-
+        //ddsfgdgff
 
 
     }
