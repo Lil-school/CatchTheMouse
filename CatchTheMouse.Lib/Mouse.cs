@@ -8,14 +8,19 @@ namespace CatchTheMouse.Lib
 {
     public class Mouse:Player
     {
+        
         public Mouse(PlayingArea playingArea) : base(playingArea)
         {
         }
 
         public override Position Move()
         {
-            
-            
+            while (true)
+            {
+                MouseMove msMove = MouseMove.GetMove();
+                Position position = new Position(Position.X + msMove.DeltaX, Position.Y + msMove.DeltaY);
+                if (_playingArea.IsValid(position)) { return position; }
+            }
         }
     }
 }
