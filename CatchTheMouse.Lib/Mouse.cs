@@ -14,7 +14,8 @@ namespace CatchTheMouse.Lib
 
         public override Position Move()
         {
-            return base.Move();
+            
+            
         }
     }
 }
