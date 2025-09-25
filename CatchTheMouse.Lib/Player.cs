@@ -9,12 +9,13 @@ namespace CatchTheMouse.Lib
     public abstract class Player
     {
         static Random _rnd = new Random();
-        public Position Position { get;}
+        public Position Position { get;} = new Position();
         protected PlayingArea _playingArea;
 
         public Player(PlayingArea playingArea)
         {
             _playingArea = playingArea;
+            DoPosition();
         }
         public void Move(Position position)
         {
@@ -23,9 +24,12 @@ namespace CatchTheMouse.Lib
         
         public virtual Position Move()
         {
-            new Position(_rnd.Next(0, _playingArea.Width), _rnd.Next(0, _playingArea.Height));
-            Move(Position);
+           DoPosition();
             return Position;
+        }
+        private void DoPosition()
+        {
+            Move(new Position(_rnd.Next(0, _playingArea.Width), _rnd.Next(0, _playingArea.Height)));
         }
     }
 }

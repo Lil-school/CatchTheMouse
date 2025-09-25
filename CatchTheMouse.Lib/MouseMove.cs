@@ -15,7 +15,7 @@ namespace CatchTheMouse.Lib
         internal int DeltaX { get; }
         internal int DeltaY { get; }
 
-        public static MouseMove()
+        static MouseMove()
         {
             _allMoves = new MouseMove[]
             {

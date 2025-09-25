@@ -15,10 +15,6 @@ namespace CatchTheMouse.Lib
             X = x;
             Y = y;
         }
-        public Position()
-        {
-            X = 0;
-            Y = 0;
-        }
+        public Position() : this(0, 0) { }
     }
 }
