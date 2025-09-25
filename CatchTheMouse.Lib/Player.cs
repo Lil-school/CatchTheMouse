@@ -24,7 +24,7 @@ namespace CatchTheMouse.Lib
         
         public virtual Position Move()
         {
-           DoPosition();
+            DoPosition();
             return Position;
         }
         private void DoPosition()
