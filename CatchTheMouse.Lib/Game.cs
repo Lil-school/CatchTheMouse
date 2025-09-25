@@ -10,7 +10,17 @@ namespace CatchTheMouse.Lib
     {
         public Player Mouse { get; }
         public Player Cat { get; }
-        public bool GameOver { get { if (Mouse.Position.X == Cat.Position.X && Mouse.Position.Y == Cat.Position.Y) { return true; } } }
+        public bool GameOver 
+        { 
+            get 
+            { 
+                if (Mouse.Position.X == Cat.Position.X && Mouse.Position.Y == Cat.Position.Y) 
+                { 
+                    return true; 
+                }
+                else { return false; }
+            } 
+        }
         public Game(int width, int height)
         {
             

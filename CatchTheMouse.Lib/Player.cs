@@ -19,7 +19,10 @@ namespace CatchTheMouse.Lib
         }
         public void Move(Position position)
         {
-            if (!_playingArea.IsValid(position)) { Position.X = position.X;Position.Y = position.Y; }
+            if (!_playingArea.IsValid(position)) 
+            { 
+                Position.X = position.X;Position.Y = position.Y; 
+            }
         }
         
         public virtual Position Move()

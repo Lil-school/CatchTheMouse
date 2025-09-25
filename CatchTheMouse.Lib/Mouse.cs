@@ -19,7 +19,10 @@ namespace CatchTheMouse.Lib
             {
                 MouseMove msMove = MouseMove.GetMove();
                 Position position = new Position(Position.X + msMove.DeltaX, Position.Y + msMove.DeltaY);
-                if (!_playingArea.IsValid(position)) { Move(position); return position; }
+                if (!_playingArea.IsValid(position)) 
+                {
+                    Move(position); return position; 
+                }
             }
         }
     }
