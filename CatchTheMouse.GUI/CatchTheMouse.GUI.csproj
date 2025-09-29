@@ -52,7 +52,9 @@
     <Compile Include="CatchTheMouse.Designer.cs">
       <DependentUpon>CatchTheMouse.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameButton.cs" />
+    <Compile Include="GameButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CatchTheMouse.resx">
@@ -92,6 +94,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CTM.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CatchTheMouse.Lib\CatchTheMouse.Lib.csproj">
+      <Project>{ecaf2b7b-ddf6-4793-8c82-270705213c8a}</Project>
+      <Name>CatchTheMouse.Lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

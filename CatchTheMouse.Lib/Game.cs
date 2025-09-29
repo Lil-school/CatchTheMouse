@@ -18,15 +18,15 @@ namespace CatchTheMouse.Lib
                 { 
                     return true; 
                 }
-                else { return false; }
+                return false;
             } 
         }
         public Game(int width, int height)
         {
             
-            PlayingArea playingArea=new PlayingArea(width, height);
-            Cat= new Cat(playingArea);
-            Mouse= new Mouse(playingArea);
+            PlayingArea playingArea = new PlayingArea(width, height);
+            Cat = new Cat(playingArea);
+            Mouse = new Mouse(playingArea);
 
         }
     }

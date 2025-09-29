@@ -10,7 +10,7 @@ namespace CatchTheMouse.Lib
     {
         internal int Width { get; }
         internal int Height { get; }
-        public PlayingArea(int width, int height)
+        internal PlayingArea(int width, int height)
         {
             Width = width;
             Height = height;

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CatchTheMouse.GUI
 {
-    internal class GameButton
+    public class GameButton:Button
     {
-        int Y { get; set; }
-        int X { get; set; }
-        GameButton(int x, int y)
+        public int Y { get; set; }
+        public int X { get; set; }
+        public GameButton(int x, int y)
         {
             X = x;
             Y = y;

@@ -7,25 +7,92 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CatchTheMouse.Lib;
 
 namespace CatchTheMouse.GUI
 {
     public partial class CatchTheMouse : Form
     {
-
+        const int WIDTH = 10;
+        const int HEIGHT = 10;
+        Game _game = new Game(WIDTH,HEIGHT);
+        Button[,] _buttons = new Button[WIDTH,HEIGHT];
+        int _mouseMoved = 0;
         public CatchTheMouse()
         {
             InitializeComponent();
-            GameButton gb = new GameButton(i, j);
-            gb.Width = 84;
-            gb.Height = 84;
-            gb.BackgroundImage = CatchTheMouse.GUI.Properties.Resources.CTM;
-            gb.BackgroundImageLayout = ImageLayout.Zoom;
-            gb.Click += new System.EventHandler(this.GameButton_Click);
-            flwPlayingArea.Controls.Add(gb);
-            _buttons[i, j] = gb;
+            for (int i = 0; i < WIDTH; i++)
+            {
+                for (int j = 0; j < HEIGHT; j++)
+                {
+                    GameButton gb = new GameButton(i, j);
+                    gb.Width = 84;
+                    gb.Height = 84;
 
+                    if (_game.Mouse.Position.X == i && _game.Mouse.Position.Y == j)
+                    {
+                        gb.BackgroundImage = GetImageJerry();
+                    }
+                    else if (_game.Cat.Position.X == i && _game.Cat.Position.Y == j)
+                    {
+                        gb.BackgroundImage = GetImageTom();
+                    }
+                    else
+                    {
+                        gb.BackgroundImage = GetImageCTM();
+                    }
+                    gb.BackgroundImageLayout = ImageLayout.Zoom;
+                    gb.Click += new System.EventHandler(this.GameButton_Click);
+                    flwPlayingArea.Controls.Add(gb);
+                    _buttons[i, j] = gb;
+                }
+                flwPlayingArea.SetFlowBreak(_buttons[i, _buttons.GetLength(1) - 1], true);
+            }
         }
+        
+        public void GameButton_Click(object sender, EventArgs e)
+        {
+            
+            if (_game.GameOver) { this.Close(); }
+            else
+            {
+                _buttons[_game.Mouse.Position.X, _game.Mouse.Position.Y].BackgroundImage = GetImageCTM();
+                _game.Mouse.Move();
+                _mouseMoved++;
+
+                if( _mouseMoved == 3)
+                {
+                    _buttons[_game.Mouse.Position.X, _game.Mouse.Position.Y].BackgroundImage = GetImageJerry();
+                    _mouseMoved = 0;
+                }
+                else
+                {
+                    _buttons[_game.Mouse.Position.X, _game.Mouse.Position.Y].BackgroundImage = GetImageCTM();
+                }
+
+                GameButton button = (GameButton)sender;
+
+                _buttons[_game.Cat.Position.X, _game.Cat.Position.Y].BackgroundImage = GetImageCTM();
+                _game.Cat.Move(new Position(button.X, button.Y));
+
+                if (_game.GameOver)
+                {
+                    _buttons[_game.Mouse.Position.X, _game.Mouse.Position.Y].BackgroundImage = GetImageTomCatchesJerry();
+                    GameOver();
+                }
+                else
+                {
+                    _buttons[_game.Cat.Position.X, _game.Cat.Position.Y].BackgroundImage = GetImageTom();
+                }
+            }
+        }
+        void GameOver()
+        {
+            MessageBox.Show("Game Over - Tom fängt Jerry");
+            this.Close();
+        }
+
+        #region ImageMethods
         Image GetImageJerry()
         {
             return Properties.Resources.jerry;
@@ -42,7 +109,7 @@ namespace CatchTheMouse.GUI
         {
             return Properties.Resources.tomcatchesjerry;
         }
-
+        #endregion
 
     }
 }
