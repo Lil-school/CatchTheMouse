@@ -17,7 +17,7 @@ namespace CatchTheMouse.Lib
         {
             while (true)
             {
-                MouseMove msMove = MouseMove.GetMove();
+                MouseMove msMove = MouseMove.GetMove();     //Gets a random move
                 Position position = new Position(Position.X + msMove.DeltaX, Position.Y + msMove.DeltaY);
                 if (_playingArea.IsValid(position)) 
                 {

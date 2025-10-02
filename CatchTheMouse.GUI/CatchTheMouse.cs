@@ -42,7 +42,7 @@ namespace CatchTheMouse.GUI
                         gb.BackgroundImage = GetImageCTM();
                     }
                     gb.BackgroundImageLayout = ImageLayout.Zoom;
-                    gb.Click += new System.EventHandler(this.GameButton_Click);
+                    gb.Click += new System.EventHandler(GameButton_Click);
                     flwPlayingArea.Controls.Add(gb);
                     _buttons[i, j] = gb;
                 }
@@ -53,7 +53,7 @@ namespace CatchTheMouse.GUI
         public void GameButton_Click(object sender, EventArgs e)
         {
             
-            if (_game.GameOver) { this.Close(); }
+            if (_game.GameOver) { Close(); }
             else
             {
                 _buttons[_game.Mouse.Position.X, _game.Mouse.Position.Y].BackgroundImage = GetImageCTM();
@@ -89,7 +89,7 @@ namespace CatchTheMouse.GUI
         void GameOver()
         {
             MessageBox.Show("Game Over - Tom fängt Jerry");
-            this.Close();
+            Close();
         }
 
         #region ImageMethods
