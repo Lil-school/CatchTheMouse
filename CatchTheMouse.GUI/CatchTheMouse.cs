@@ -21,6 +21,10 @@ namespace CatchTheMouse.GUI
         public CatchTheMouse()
         {
             InitializeComponent();
+            CreateButtons();
+        }
+        void CreateButtons()
+        {
             for (int i = 0; i < WIDTH; i++)
             {
                 for (int j = 0; j < HEIGHT; j++)
@@ -49,7 +53,7 @@ namespace CatchTheMouse.GUI
                 flwPlayingArea.SetFlowBreak(_buttons[i, _buttons.GetLength(1) - 1], true);
             }
         }
-        
+
         public void GameButton_Click(object sender, EventArgs e)
         {
             
@@ -86,6 +90,7 @@ namespace CatchTheMouse.GUI
                 }
             }
         }
+
         void GameOver()
         {
             MessageBox.Show("Game Over - Tom fängt Jerry");

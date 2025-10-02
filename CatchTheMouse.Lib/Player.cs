@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CatchTheMouse.Lib
 {
-    public abstract class Player
+    public abstract class Player : IPlayer
     {
         static Random _rnd = new Random();
-        public Position Position { get;}= new Position();
+        public Position Position { get; } = new Position();
         protected PlayingArea _playingArea;
 
         public Player(PlayingArea playingArea)
@@ -19,13 +19,13 @@ namespace CatchTheMouse.Lib
         }
         public void Move(Position position)
         {
-            if (_playingArea.IsValid(position)) 
-            { 
+            if (_playingArea.IsValid(position))
+            {
                 Position.X = position.X;
-                Position.Y = position.Y; 
+                Position.Y = position.Y;
             }
         }
-        
+
         public virtual Position Move()
         {
             DoPosition();
