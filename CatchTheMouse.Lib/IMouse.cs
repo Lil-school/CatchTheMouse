@@ -1,10 +1,9 @@
 ﻿namespace CatchTheMouse.Lib
 {
-    public interface IPlayer
+    public interface IMouse
     {
         Position Position { get; }
-
+        bool IsVisible { get; }
         Position Move();
-        void Move(Position position);
     }
 }

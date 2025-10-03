@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CatchTheMouse.Lib
 {
-    public class Mouse:Player
+    public class Mouse : Player
     {
         
         public Mouse(PlayingArea playingArea) : base(playingArea)
@@ -26,5 +26,7 @@ namespace CatchTheMouse.Lib
                 }
             }
         }
+
+        public bool IsVisible{ get; }
     }
 }

@@ -43,13 +43,14 @@
   <ItemGroup>
     <Compile Include="Cat.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="IPlayer.cs" />
+    <Compile Include="IMouse.cs" />
     <Compile Include="Mouse.cs" />
     <Compile Include="MouseMove.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayingArea.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WhatMouseDoes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

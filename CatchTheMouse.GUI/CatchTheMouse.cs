@@ -62,15 +62,14 @@ namespace CatchTheMouse.GUI
             {
                 _buttons[_game.Mouse.Position.X, _game.Mouse.Position.Y].BackgroundImage = GetImageCTM();
                 _game.Mouse.Move();
-                _mouseMoved++;
 
-                if( _mouseMoved == 3)
+
+                if (_game.Mouse.IsVisible)
                 {
                     _buttons[_game.Mouse.Position.X, _game.Mouse.Position.Y].BackgroundImage = GetImageJerry();
-                    _mouseMoved = 0;
-                }
-                else
-                {
+                } 
+                else 
+                {        
                     _buttons[_game.Mouse.Position.X, _game.Mouse.Position.Y].BackgroundImage = GetImageCTM();
                 }
 

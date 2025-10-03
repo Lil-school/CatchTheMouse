@@ -8,8 +8,12 @@ namespace CatchTheMouse.Lib
 {
     public class Game
     {
-        public Player Mouse { get; }
+        int _maxScore = 1000;
+        DateTime _startTime = DateTime.Now;
+        int _moves;
+        public IMouse Mouse { get; }
         public Player Cat { get; }
+        public int Score { get { return _maxScore - _moves * 10 - (int)(DateTime.Now - _startTime).TotalSeconds;  } }
         public bool GameOver 
         { 
             get 
@@ -21,13 +25,20 @@ namespace CatchTheMouse.Lib
                 return false;
             } 
         }
-        public Game(int width, int height)
+        public Game(int width, int height, int moves)
         {
             
             PlayingArea playingArea = new PlayingArea(width, height);
             Cat = new Cat(playingArea);
-            Mouse = new Mouse(playingArea);
-
+            Mouse =(IMouse) new Mouse(playingArea);
+            _moves = moves;
         }
+
+        public void Play(Position catPosition)
+        {
+            Mouse.Move();
+            Cat.Move(catPosition);
+        }
+
     }
 }
