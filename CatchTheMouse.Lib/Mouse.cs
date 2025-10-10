@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace CatchTheMouse.Lib
 {
-    public class Mouse : Player
+    public class Mouse : Player, IMouse
     {
         
         public Mouse(PlayingArea playingArea) : base(playingArea)
         {
         }
+
+        public bool IsVisible { get; }
 
         public override Position Move()
         {
@@ -27,6 +29,6 @@ namespace CatchTheMouse.Lib
             }
         }
 
-        public bool IsVisible{ get; }
+       
     }
 }

@@ -1,34 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CatchTheMouse.Lib
 {
-    public class WhatMouseDoes : Player, IMouse
+    public class WhatMouseDoes :Player, IMouse
     {
-        int _mouseMoved = 0;
-        Mouse _mouse;
-        public WhatMouseDoes(PlayingArea playingArea) : base(playingArea)
+        int _mouseMoved = 1;
+        
+        public WhatMouseDoes(PlayingArea playingArea):base (playingArea)
         {
-            new Mouse(playingArea);
+          
         }
 
         public bool IsVisible { get; private set; }
 
+
         public override Position Move()
         {
-            if (_mouseMoved == 3)
+            while (true)
             {
-                IsVisible = true;
-                Position position = _mouse.Move();
-                _mouseMoved = 0;
-                return position;
+                MouseMove msMove = MouseMove.GetMove();     //Gets a random move
+                Position position = new Position(Position.X + msMove.DeltaX, Position.Y + msMove.DeltaY);
+                if (_playingArea.IsValid(position))
+                {
+                    if (_mouseMoved == 3)
+                    {
+                        IsVisible = true;
+                    
+                        _mouseMoved = 1;
+                        return position;
+                    }
+                    else
+                    {
+                        IsVisible = false;
+                        _mouseMoved++;
+                        return position;
+                    }
+                }
             }
-            IsVisible = false;
-            _mouseMoved++;
-            return _mouse.Position;
             
         }
     }
