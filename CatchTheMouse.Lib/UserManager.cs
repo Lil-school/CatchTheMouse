@@ -9,7 +9,7 @@ namespace CatchTheMouse.Lib
     public class UserManager
     {
         List<User> _users = new List<User>();
-        public void AddUsers(User user)
+        public void AddUser(User user)
         {
             if (!_users.Contains(user))
             {

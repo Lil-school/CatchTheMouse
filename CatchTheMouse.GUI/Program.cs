@@ -16,7 +16,7 @@ namespace CatchTheMouse.GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CatchTheMouse());
+            Application.Run(new StatisticsForm());
         }
     }
 }

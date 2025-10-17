@@ -13,7 +13,7 @@ namespace CatchTheMouse.Lib
         int _moves=0;
         public IMouse Mouse { get; }
         public Player Cat { get; }
-       
+        public User CurrentUser { get; set; }
         public int Score { 
             get 
             { 
@@ -34,9 +34,9 @@ namespace CatchTheMouse.Lib
             } 
         }
         
-        public Game(int width, int height, User user)
+        public Game(int width, int height)
         {
-            new User(user);
+            
             PlayingArea playingArea = new PlayingArea(width, height);
             Cat = new Cat(playingArea);
             Mouse = new WhatMouseDoes(playingArea);

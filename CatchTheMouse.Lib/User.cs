@@ -8,19 +8,20 @@ namespace CatchTheMouse.Lib
 {
     public class User
     {
-        public string FistName { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }  
         public DateTime LastGame { get; set; }
         public int HighScore { get; set; }
-        public User(string name, DateTime lastGame, int score)
+        public User(string FirstName,string LastName, DateTime lastGame, int score)
         {
-            var parts = name.Split(' ');
-            FistName = parts.Length > 0 ? parts[0] : "";
-            LastName = parts.Length > 1 ?parts[1] : "";
+
+
+            this.FirstName = FirstName;
+            this.LastName = LastName;
             LastGame = lastGame;
             HighScore = score;
         }
-        public User(User user) : this(user.FistName + " " + user.LastName, user.LastGame, user.HighScore) { }
+        public User(User user) : this(user.FirstName,user.LastName, user.LastGame, user.HighScore) { }
         public int ChangeHighScore(int newScore)
         {
             if (newScore > HighScore)
@@ -32,7 +33,7 @@ namespace CatchTheMouse.Lib
         }
         public override string ToString()
         {
-            return $"{FistName} {LastName} - Highscore: {HighScore} - Last Game: {LastGame}";
+            return $"{FirstName} {LastName} - Highscore: {HighScore} - Last Game: {LastGame}";
         }
     }
 }

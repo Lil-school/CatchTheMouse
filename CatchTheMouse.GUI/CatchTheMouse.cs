@@ -93,7 +93,7 @@ namespace CatchTheMouse.GUI
         void GameOver()
         {
             MessageBox.Show("Game Over - Tom fängt Jerry");
-            Close();
+            Hide();
         }
 
         #region ImageMethods
