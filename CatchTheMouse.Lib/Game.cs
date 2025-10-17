@@ -13,8 +13,15 @@ namespace CatchTheMouse.Lib
         int _moves=0;
         public IMouse Mouse { get; }
         public Player Cat { get; }
-        public int AnzahlMoves() { return _moves++; }
-        public int Score { get { return _maxScore - _moves * 10 - (int)(DateTime.Now - _startTime).TotalSeconds;  } }
+       
+        public int Score { 
+            get 
+            { 
+                int score= _maxScore - _moves * 10 - (int)(DateTime.Now - _startTime).TotalSeconds;
+                if (score >= 0) { return score; }
+                return 0;
+            } 
+        }
         public bool GameOver 
         { 
             get 
@@ -27,9 +34,9 @@ namespace CatchTheMouse.Lib
             } 
         }
         
-        public Game(int width, int height)
+        public Game(int width, int height, User user)
         {
-            
+            new User(user);
             PlayingArea playingArea = new PlayingArea(width, height);
             Cat = new Cat(playingArea);
             Mouse = new WhatMouseDoes(playingArea);
