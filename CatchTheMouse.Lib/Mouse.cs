@@ -13,7 +13,7 @@ namespace CatchTheMouse.Lib
         {
         }
 
-        public bool IsVisible { get; }
+        public bool IsVisible { get; private set; }
 
         public override Position Move()
         {
@@ -23,9 +23,11 @@ namespace CatchTheMouse.Lib
                 Position position = new Position(Position.X + msMove.DeltaX, Position.Y + msMove.DeltaY);
                 if (_playingArea.IsValid(position)) 
                 {
-                    Move(position); 
+                    Move(position);
+                    IsVisible = true;
                     return position; 
                 }
+
             }
         }
 

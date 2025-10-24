@@ -6,18 +6,16 @@ using System.Threading.Tasks;
 
 namespace CatchTheMouse.Lib
 {
-    public class User
+    public class User : IComparable<User>
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }  
-        public DateTime LastGame { get; set; }
-        public int HighScore { get; set; }
-        public User(string FirstName,string LastName, DateTime lastGame, int score)
+        string FirstName { get; set; }
+        public string LastName { get; private set; }  
+        DateTime LastGame { get; set; }
+        public int HighScore { get; private set; }
+        public User(string firstName,string lastName, DateTime lastGame, int score)
         {
-
-
-            this.FirstName = FirstName;
-            this.LastName = LastName;
+            FirstName = firstName;
+            LastName = lastName;
             LastGame = lastGame;
             HighScore = score;
         }
@@ -34,6 +32,16 @@ namespace CatchTheMouse.Lib
         public override string ToString()
         {
             return $"{FirstName} {LastName} - Highscore: {HighScore} - Last Game: {LastGame}";
+        }
+
+        public int CompareTo(User other)
+        {
+            int result = other.HighScore.CompareTo(HighScore);
+            if (result==0)
+            {
+                return other.LastName.CompareTo(LastName);
+            }
+            return result;
         }
     }
 }

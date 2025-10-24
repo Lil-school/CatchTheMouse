@@ -44,6 +44,8 @@
     <Compile Include="Cat.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="IMouse.cs" />
+    <Compile Include="IUserLoadService.cs" />
+    <Compile Include="IUserSaveService.cs" />
     <Compile Include="Mouse.cs" />
     <Compile Include="MouseMove.cs" />
     <Compile Include="Player.cs" />

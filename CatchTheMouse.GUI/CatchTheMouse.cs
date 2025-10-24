@@ -18,12 +18,14 @@ namespace CatchTheMouse.GUI
         Game _game = new Game(WIDTH,HEIGHT);
         Button[,] _buttons = new Button[WIDTH,HEIGHT];
         int _mouseMoved = 0;
+        internal StatisticsForm StatisticsForm { get; set; }
         public CatchTheMouse()
         {
             InitializeComponent();
+            
             CreateButtons();
         }
-        void CreateButtons()
+        internal void CreateButtons()
         {
             for (int i = 0; i < WIDTH; i++)
             {
@@ -53,6 +55,8 @@ namespace CatchTheMouse.GUI
                 flwPlayingArea.SetFlowBreak(_buttons[i, _buttons.GetLength(1) - 1], true);
             }
         }
+        
+
 
         public void GameButton_Click(object sender, EventArgs e)
         {
@@ -60,8 +64,11 @@ namespace CatchTheMouse.GUI
             if (_game.GameOver) { Close(); }
             else
             {
+                GameButton button = (GameButton)sender;
                 _buttons[_game.Mouse.Position.X, _game.Mouse.Position.Y].BackgroundImage = GetImageCTM();
-                _game.Mouse.Move();
+
+                _buttons[_game.Cat.Position.X, _game.Cat.Position.Y].BackgroundImage = GetImageCTM();
+               _game.Play(new Position(button.X, button.Y));
 
 
                 if (_game.Mouse.IsVisible)
@@ -73,15 +80,13 @@ namespace CatchTheMouse.GUI
                     _buttons[_game.Mouse.Position.X, _game.Mouse.Position.Y].BackgroundImage = GetImageCTM();
                 }
 
-                GameButton button = (GameButton)sender;
-
-                _buttons[_game.Cat.Position.X, _game.Cat.Position.Y].BackgroundImage = GetImageCTM();
-                _game.Cat.Move(new Position(button.X, button.Y));
+                
 
                 if (_game.GameOver)
                 {
                     _buttons[_game.Mouse.Position.X, _game.Mouse.Position.Y].BackgroundImage = GetImageTomCatchesJerry();
                     GameOver();
+                    
                 }
                 else
                 {
@@ -94,7 +99,12 @@ namespace CatchTheMouse.GUI
         {
             MessageBox.Show("Game Over - Tom fängt Jerry");
             Hide();
+            StatisticsForm.LoadScores();
+            StatisticsForm.Show();
+            _game= new Game(WIDTH, HEIGHT);
         }
+
+       
 
         #region ImageMethods
         Image GetImageJerry()

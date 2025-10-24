@@ -9,11 +9,16 @@ namespace CatchTheMouse.Lib
     public class Game
     {
         int _maxScore = 1000;
+
         DateTime _startTime = DateTime.Now;
+
         int _moves=0;
+
+        WhatMouseDoes _mouse;
         public IMouse Mouse { get; }
         public Player Cat { get; }
         public User CurrentUser { get; set; }
+
         public int Score { 
             get 
             { 
@@ -40,13 +45,15 @@ namespace CatchTheMouse.Lib
             PlayingArea playingArea = new PlayingArea(width, height);
             Cat = new Cat(playingArea);
             Mouse = new WhatMouseDoes(playingArea);
-            
+            _mouse = (WhatMouseDoes)Mouse;
+            _mouse.Test = true;
         }
 
         public void Play(Position catPosition)
         {
             Mouse.Move();
             Cat.Move(catPosition);
+            _moves++;
         }
 
     }
