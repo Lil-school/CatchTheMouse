@@ -8,9 +8,9 @@ namespace CatchTheMouse.Lib
 {
     public class User : IComparable<User>
     {
-        string FirstName { get; set; }
-        public string LastName { get; private set; }  
-        DateTime LastGame { get; set; }
+        internal string FirstName { get; set; }
+        internal string LastName { get; private set; }  
+        internal DateTime LastGame { get; set; }
         public int HighScore { get; private set; }
         public User(string firstName,string lastName, DateTime lastGame, int score)
         {

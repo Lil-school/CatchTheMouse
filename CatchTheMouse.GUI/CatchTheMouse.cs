@@ -18,12 +18,16 @@ namespace CatchTheMouse.GUI
         Game _game = new Game(WIDTH,HEIGHT);
         Button[,] _buttons = new Button[WIDTH,HEIGHT];
         int _mouseMoved = 0;
+        IUserLoadService _loadService;
+        IUserSaveService _saveService;
+        UserManager _userManager;
         internal StatisticsForm StatisticsForm { get; set; }
         public CatchTheMouse()
         {
             InitializeComponent();
             
             CreateButtons();
+            _userManager= new UserManager(_loadService, _saveService);
         }
         internal void CreateButtons()
         {
@@ -99,6 +103,7 @@ namespace CatchTheMouse.GUI
         {
             MessageBox.Show("Game Over - Tom fängt Jerry");
             Hide();
+            
             StatisticsForm.LoadScores();
             StatisticsForm.Show();
             _game= new Game(WIDTH, HEIGHT);

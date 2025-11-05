@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CatchTheMouse.Lib
 {
-    internal interface IUserLoadService
+    public interface IUserLoadService
     {
-        public bool Load(string filename, List<User>);
+        bool Load(string filename, List<User> users);
     }
 }

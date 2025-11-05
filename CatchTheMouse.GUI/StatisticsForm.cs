@@ -13,13 +13,16 @@ namespace CatchTheMouse.GUI
 {
     public partial class StatisticsForm : Form
     {
-        UserManager _userManager = new UserManager();
+        IUserSaveService _saveService;
+        IUserLoadService _loadService;
+        UserManager _userManager;
         CatchTheMouse _catchTheMouse;
         Game _game = new Game(10,10);
 
         public StatisticsForm()
         {
             InitializeComponent();
+            _userManager = new UserManager(_loadService, _saveService);
             _catchTheMouse = new CatchTheMouse();
             _catchTheMouse.StatisticsForm = this; 
             LoadScores();

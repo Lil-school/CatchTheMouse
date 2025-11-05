@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace CatchTheMouse.Lib
 {
-    internal interface IUserSaveService
+    public interface IUserSaveService
     {
-        public bool Save(string filename, List<User> users);
+        bool Save(string filename, List<User> users);
     }
 }
