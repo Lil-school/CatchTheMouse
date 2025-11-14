@@ -40,9 +40,9 @@
             // 
             this.lstScore.FormattingEnabled = true;
             this.lstScore.ItemHeight = 24;
-            this.lstScore.Location = new System.Drawing.Point(445, 98);
+            this.lstScore.Location = new System.Drawing.Point(394, 99);
             this.lstScore.Name = "lstScore";
-            this.lstScore.Size = new System.Drawing.Size(457, 268);
+            this.lstScore.Size = new System.Drawing.Size(574, 268);
             this.lstScore.TabIndex = 0;
             // 
             // tbxFirstName

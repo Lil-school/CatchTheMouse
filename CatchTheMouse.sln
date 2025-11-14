@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatchTheMouse.Lib", "CatchT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatchTheMouse.GUI", "CatchTheMouse.GUI\CatchTheMouse.GUI.csproj", "{93F7D73B-E4C2-444C-90A9-7AD5F7734737}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatchTheMouse.Lib.UnitTests", "CatchTheMouse.Lib.UnitTests\CatchTheMouse.Lib.UnitTests.csproj", "{F2527B46-F1CD-4268-ADA2-0F9A28182ADD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{93F7D73B-E4C2-444C-90A9-7AD5F7734737}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93F7D73B-E4C2-444C-90A9-7AD5F7734737}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93F7D73B-E4C2-444C-90A9-7AD5F7734737}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2527B46-F1CD-4268-ADA2-0F9A28182ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2527B46-F1CD-4268-ADA2-0F9A28182ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2527B46-F1CD-4268-ADA2-0F9A28182ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2527B46-F1CD-4268-ADA2-0F9A28182ADD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

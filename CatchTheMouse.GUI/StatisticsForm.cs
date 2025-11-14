@@ -13,12 +13,12 @@ namespace CatchTheMouse.GUI
 {
     public partial class StatisticsForm : Form
     {
+        User newUser;
         IUserSaveService _saveService;
         IUserLoadService _loadService;
         UserManager _userManager;
         CatchTheMouse _catchTheMouse;
-        Game _game = new Game(10,10);
-
+        internal User CurrentUser { get; set; }
         public StatisticsForm()
         {
             InitializeComponent();
@@ -30,9 +30,9 @@ namespace CatchTheMouse.GUI
         public void LoadScores()
         {
             lstScore.Items.Clear();
-            foreach (var score in _userManager.GetUsers())
+            foreach (var user in _userManager.GetUserSortedByScore())
             {
-                lstScore.Items.Add(score);
+                lstScore.Items.Add(user);
             }
         }       
 
@@ -40,20 +40,24 @@ namespace CatchTheMouse.GUI
         {
             if (!string.IsNullOrEmpty(tbxFirstName.Text) && !string.IsNullOrEmpty(tbxLastName.Text))
             {
-                _userManager.AddUser(new User(tbxFirstName.Text,tbxLastName.Text,DateTime.Now,0));
+                newUser = new User(tbxFirstName.Text, tbxLastName.Text, DateTime.Now, 0);
+                CurrentUser = newUser;
+                _userManager.AddUser(newUser);
                 Hide();
                 _catchTheMouse.Show();
             }
             else if (lstScore.SelectedItem != null) 
             {
-                _game.CurrentUser = (User)lstScore.SelectedItem;
+                CurrentUser = (User)lstScore.SelectedItem;
                 Hide();
                 _catchTheMouse.Show();
             }
         }
+        #region unused
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
+        #endregion
     }
 }

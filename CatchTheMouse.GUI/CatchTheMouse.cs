@@ -103,8 +103,9 @@ namespace CatchTheMouse.GUI
         {
             MessageBox.Show("Game Over - Tom fängt Jerry");
             Hide();
-            
+            StatisticsForm.CurrentUser.ChangeHighScore(_game.Score);
             StatisticsForm.LoadScores();
+            _userManager.SaveUsers();
             StatisticsForm.Show();
             _game= new Game(WIDTH, HEIGHT);
         }

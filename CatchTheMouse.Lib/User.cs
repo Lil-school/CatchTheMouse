@@ -11,12 +11,16 @@ namespace CatchTheMouse.Lib
         internal string FirstName { get; set; }
         internal string LastName { get; private set; }  
         internal DateTime LastGame { get; set; }
-        public int HighScore { get; private set; }
+        internal int HighScore { get; private set; }
         public User(string firstName,string lastName, DateTime lastGame, int score)
         {
             FirstName = firstName;
             LastName = lastName;
             LastGame = lastGame;
+            if(score<0)
+            {
+                score = 0;
+            }
             HighScore = score;
         }
         public User(User user) : this(user.FirstName,user.LastName, user.LastGame, user.HighScore) { }
@@ -26,6 +30,7 @@ namespace CatchTheMouse.Lib
             {
                 HighScore = newScore;
             }
+
             LastGame= DateTime.Now;
             return HighScore;
         }

@@ -20,11 +20,18 @@ namespace CatchTheMouse.Lib
         
         public void AddUser(User user)
         {
-            if (!_users.Contains(user))
+            int index = _users.FindIndex(u => u.FirstName == user.FirstName && u.LastName == user.LastName);
+
+            if (index >= 0)
+            {
+                _users[index] = user;      // replace in place
+            }
+            else
             {
                 _users.Add(user);
             }
         }
+
         public User[] GetUsers()
         {
             return _users.ToArray();
@@ -60,13 +67,13 @@ namespace CatchTheMouse.Lib
 
         public bool Save(string filename, List<User> users)
         {
-            using (StreamWriter sw = new StreamWriter(@"..\..\..\" + FILENAME + ".CSV"))
+            using (StreamWriter sw = new StreamWriter(@"..\..\..\" + FILENAME + ".CSV",true))
             {
                 try
                 {
-                    foreach (User user in _users)
+                   foreach (var user in users)
                     {
-                        sw.WriteLine($"{user.FirstName};{user.LastName};{user.LastGame};{user.HighScore}");
+                        sw.WriteLine(user.ToString());
                     }
                     return true;
                 }
@@ -79,7 +86,7 @@ namespace CatchTheMouse.Lib
 
         public bool SaveUsers()
         {
-            return _saveService.Save(FILENAME, _users);
+            return Save(FILENAME, _users);
         }
     }
 }

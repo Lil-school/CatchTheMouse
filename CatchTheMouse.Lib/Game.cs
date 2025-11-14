@@ -47,6 +47,7 @@ namespace CatchTheMouse.Lib
             Mouse = new WhatMouseDoes(playingArea);
             _mouse = (WhatMouseDoes)Mouse;
             _mouse.Test = true;
+            
         }
 
         public void Play(Position catPosition)
