@@ -44,37 +44,34 @@ namespace CatchTheMouse.Lib
 
         public bool Load(string filename, List<User> users)
         {
-        using (StreamReader sr = new StreamReader(@"..\..\..\" + FILENAME + ".CSV", Encoding.UTF8))
-            {
                 try
                 {
+                foreach (var line in File.ReadAllLines(@"..\..\..\" + FILENAME + ".CSV", Encoding.UTF8))
+                {
                     
-                    while (!sr.EndOfStream)
-                    {
-                        string line = sr.ReadLine();
-                        string[] parts = line.Split(';');
-                        User user = new User(parts[0], parts[1], DateTime.Parse(parts[2]), int.Parse(parts[3]));
-                        _users.Add(user);
-                    }
+                    string[] parts = line.Split(';');
+                    User user = new User(parts[0], parts[1], DateTime.Parse(parts[5]), int.Parse(parts[3]));
+                    _users.Add(user);
+                }
                     return true;
                 }
                 catch
                 {
                     return false;
                 }
-            }
         }
+        
 
         public bool Save(string filename, List<User> users)
         {
-            using (StreamWriter sw = new StreamWriter(@"..\..\..\" + FILENAME + ".CSV",true))
+            using (StreamWriter sw = new StreamWriter(@"..\..\..\"+FILENAME+".CSV",false,Encoding.UTF8))
             {
                 try
                 {
                    foreach (var user in users)
-                    {
+                   {
                         sw.WriteLine(user.ToString());
-                    }
+                   }
                     return true;
                 }
                 catch

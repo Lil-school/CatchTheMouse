@@ -14,7 +14,7 @@ namespace CatchTheMouse.Lib.UnitTests
         public void ChangeHighScore_SeeIfHighScoreChanges_ChangeCurrentHighScoreIfTheNewOneIsHigher(int newScoreHigher, int newScoreLower, int expectedHighScore)
         {
             //Arrange
-            User user = new User("John", "Doe", DateTime.Now, int.MinValue);
+            User user = new User("John", "Doe", DateTime.Now, -10);
             
             // Act
             int updatedScore=user.ChangeHighScore(newScoreHigher);

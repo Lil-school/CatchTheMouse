@@ -21,13 +21,14 @@ namespace CatchTheMouse.GUI
         IUserLoadService _loadService;
         IUserSaveService _saveService;
         UserManager _userManager;
-        internal StatisticsForm StatisticsForm { get; set; }
-        public CatchTheMouse()
+        internal StatisticsForm StatisticsForm { get; }
+
+        public CatchTheMouse(UserManager userManager, StatisticsForm statisticsForm)
         {
             InitializeComponent();
-            
+            _userManager = userManager;
+            StatisticsForm = statisticsForm;
             CreateButtons();
-            _userManager= new UserManager(_loadService, _saveService);
         }
         internal void CreateButtons()
         {
@@ -107,7 +108,7 @@ namespace CatchTheMouse.GUI
             StatisticsForm.LoadScores();
             _userManager.SaveUsers();
             StatisticsForm.Show();
-            _game= new Game(WIDTH, HEIGHT);
+            _game = new Game(WIDTH, HEIGHT);
         }
 
        
