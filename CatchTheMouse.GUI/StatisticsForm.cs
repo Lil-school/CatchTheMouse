@@ -33,7 +33,7 @@ namespace CatchTheMouse.GUI
             lstScore.Items.Clear();
             foreach (var user in UserManager.GetUserSortedByScore())
             {
-                lstScore.Items.Add(user);
+                lstScore.Items.Add(user.GetInfo());
             }
         }       
 

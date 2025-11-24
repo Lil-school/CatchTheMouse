@@ -36,7 +36,11 @@ namespace CatchTheMouse.Lib
         }
         public override string ToString()
         {
-            return $"{FirstName}; {LastName}; HighScore: ;{HighScore}; Last Game: ;{LastGame}";
+            return $"{FirstName}; {LastName}; HighScore: ;{HighScore} Last Game: ;{LastGame}";
+        }
+        public string GetInfo()
+        {
+            return $"{FirstName} {LastName} - HighScore: {HighScore}, Last Game: {LastGame}";
         }
 
         public int CompareTo(User other)
